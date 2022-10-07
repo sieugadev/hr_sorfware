@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="whatModelStoreContainer" CdmEntityContainer="QLSVEntities">
+    <EntitySetMapping Name="Lops">
+      <EntityTypeMapping TypeName="whatModel.Lop">
+        <MappingFragment StoreEntitySet="Lop">
+          <ScalarProperty Name="id_lop" ColumnName="id_lop" />
+          <ScalarProperty Name="id_sv" ColumnName="id_sv" />
+          <ScalarProperty Name="ten_lop" ColumnName="ten_lop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SinhViens">
+      <EntityTypeMapping TypeName="whatModel.SinhVien">
+        <MappingFragment StoreEntitySet="SinhVien">
+          <ScalarProperty Name="id_sv" ColumnName="id_sv" />
+          <ScalarProperty Name="hoten_sv" ColumnName="hoten_sv" />
+          <ScalarProperty Name="diachi_sv" ColumnName="diachi_sv" />
+          <ScalarProperty Name="gioitinh_sv" ColumnName="gioitinh_sv" />
+          <ScalarProperty Name="sdt_sv" ColumnName="sdt_sv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taikhoans">
+      <EntityTypeMapping TypeName="whatModel.Taikhoan">
+        <MappingFragment StoreEntitySet="Taikhoan">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

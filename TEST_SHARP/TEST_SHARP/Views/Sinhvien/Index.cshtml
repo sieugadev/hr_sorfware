@@ -1,0 +1,61 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<TEST_SHARP.Models.SinhVien>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Index", "Sinhvien", FormMethod.Post, new {@class="navbar-form navbar-right" }))
+{
+    <div class="form-group"><input type="text" name="strSearch" placeholder="Nhập thông tin tìm kiếm" class="form-control" /></div>
+    <div class="form-group"><button type="submit" class="btn btn-danger">Tìm kiếm</button></div>
+
+}
+<br /><br />
+<h2 class="text-center text-primary">DANH SÁCH SINH VIÊN</h2>
+
+    @Html.ActionLink("Thêm Mới", "Create","Sinhvien", new { @class = "btn btn-info" })
+
+<table class="table table-bordered">
+    <tr>
+        <th>Mã SV</th>
+        <th>Tên Sinh Viên</th>
+        <th>Địa chỉ</th>
+        <th>Giới Tính</th>
+        <th>Điện Thoại</th>
+        <th>Tuỳ Chỉnh</th>
+      
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.id_sv</td>
+            <td>@item.hoten_sv</td>
+            <td>@item.diachi_sv</td>
+            <td>@item.gioitinh_sv</td>
+            <td>@item.sdt_sv</td>
+          
+            <td>
+                @Html.ActionLink("Sửa", "Edit",new { id = item.id_sv.Trim() }, new { @class = "btn btn-info"}) 
+
+                @Html.ActionLink("Xoá", "Delete", new { id = item.id_sv.Trim() }, new { @class = "btn btn-danger" })
+            </td>
+              
+             
+           
+       
+       
+    
+
+    </tr>
+    }
+</table>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @strSearch = ViewBag.strSearch }))
+</div>
+
+

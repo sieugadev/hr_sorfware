@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="whatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Lop">
+    <Key>
+      <PropertyRef Name="id_lop" />
+    </Key>
+    <Property Name="id_lop" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_sv" Type="nchar" MaxLength="10" />
+    <Property Name="ten_lop" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="id_sv" />
+    </Key>
+    <Property Name="id_sv" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="hoten_sv" Type="nvarchar" MaxLength="50" />
+    <Property Name="diachi_sv" Type="nvarchar" MaxLength="50" />
+    <Property Name="gioitinh_sv" Type="bit" />
+    <Property Name="sdt_sv" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Taikhoan">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Lop_Lop1">
+    <End Role="Lop" Type="Self.Lop" Multiplicity="1" />
+    <End Role="Lop1" Type="Self.Lop" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Lop">
+        <PropertyRef Name="id_lop" />
+      </Principal>
+      <Dependent Role="Lop1">
+        <PropertyRef Name="id_lop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="whatModelStoreContainer">
+    <EntitySet Name="Lop" EntityType="Self.Lop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Taikhoan" EntityType="Self.Taikhoan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Lop_Lop1" Association="Self.FK_Lop_Lop1">
+      <End Role="Lop" EntitySet="Lop" />
+      <End Role="Lop1" EntitySet="Lop" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
